@@ -1,0 +1,25 @@
+%table{border: 1, style: "font-size: 7px;"}
+  %thead
+    %tr
+      %th file_number
+      %th api_number
+      %th operator_name
+      %th township
+      %th township_bearing
+      %th range
+      %th range_bearing
+      %th section
+      %th state
+      %th field_name
+      %th effective_on
+      %th action_type
+      %th slant
+      %th target_formation
+      %th elevation
+      %th depth
+      %th countyfips
+      %th well_status
+  %tbody
+    %tr
+      = render @permits
+
