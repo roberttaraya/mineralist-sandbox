@@ -5,7 +5,8 @@ namespace :import_from_csv do
   desc "Import Permits from csv file"
   task :import_permits => [:environment] do
 
-    file = "/Users/roberttaraya/Downloads/permits.csv"
+    # file = "/Users/roberttaraya/Downloads/permits.csv"
+    file = "/Users/roberttaraya/Google Drive/Mineralist/Engineering/Geodata/Permits/permits.csv"
     start_time = Time.now
     csv_row_number = 1
     records_saved = 0
