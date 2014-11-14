@@ -1,4 +1,4 @@
-%table{border: 1, style: "font-size: 7px;"}
+%table{border: '1', width: '200', style: "font-size: 12px;"}
   %thead
     %tr
       %th file_number
@@ -20,6 +20,5 @@
       %th countyfips
       %th well_status
   %tbody
-    %tr
-      = render @permits
+    = render @permits
 
