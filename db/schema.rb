@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113221441) do
+ActiveRecord::Schema.define(version: 20141114161931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20141113221441) do
     t.integer  "depth"
     t.integer  "countyfips"
     t.string   "well_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "productions", force: true do |t|
+    t.integer  "api_number",     limit: 8
+    t.date     "reported_on"
+    t.decimal  "barrels_oil"
+    t.decimal  "mcf_gas"
+    t.decimal  "barrels_water"
+    t.integer  "days_producing"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
