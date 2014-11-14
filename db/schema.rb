@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141113221441) do
 
   create_table "permits", force: true do |t|
     t.integer  "file_number"
-    t.integer  "api_number"
+    t.integer  "api_number",       limit: 8
     t.string   "operator_name"
     t.integer  "township"
     t.string   "township_bearing"
