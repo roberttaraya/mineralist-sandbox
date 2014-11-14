@@ -1,5 +1,5 @@
 class PermitsController < ApplicationController
   def index
-    @permits = Permit.all
+    @permits = Permit.all.limit(100)
   end
 end
