@@ -5,7 +5,7 @@ namespace :import_from_csv do
   desc "Import Production from csv file"
   task :import_production => [:environment] do
 
-    file = "/Users/roberttaraya/Google Drive/Mineralist/Engineering/Geodata/Production/production.csv"
+    file = File.expand_path("../../assets/production.csv", __FILE__)
     start_time = Time.now
     csv_row_number = 1
     records_saved = 0
@@ -14,7 +14,15 @@ namespace :import_from_csv do
 
     CSV.foreach(file, headers: true, header_converters: :symbol) do |data_row|
       csv_row_number += 1
+
       data_attrs = data_row.to_hash
+
+      data_attrs[:api_number] = data_attrs[:api_number].to_i
+      data_attrs[:barrels_oil] = data_attrs[:barrels_oil].to_f
+      data_attrs[:barrels_water] = data_attrs[:barrels_water].to_f
+      data_attrs[:days_producing] = data_attrs[:days_producing].to_i
+      data_attrs[:mcf_gas] = data_attrs[:mcf_gas].to_f
+      data_attrs[:reported_on] = Date.strptime("#{data_attrs[:reported_on]}", "%Y%m%d")
 
       production = Production.where(data_attrs).first_or_initialize(data_attrs)
 
@@ -26,6 +34,7 @@ namespace :import_from_csv do
         records_not_saved += 1
         # records_arry << data_attrs
         # puts "Record #{csv_row_number} not saved"
+        print "."
       end
     end
     puts "#{records_saved} out of #{records_saved + records_not_saved} records were saved."
